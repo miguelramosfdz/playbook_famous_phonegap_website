@@ -97,6 +97,10 @@ h6, .h6 {
   color: #888;
 }
 
+p.screenshots img {
+	border:1px solid #111;
+	margin: 8px;
+}
 
 /*
  * Main column and sidebar layout
