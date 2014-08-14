@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Utility Functions (utils.js) | Welcome</title>
+        <title>Utility Functions (utils.js) | Welcome!</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.7.0">
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="5.9" data-basepath=".." data-revision="1407976487982">
+    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="5.9" data-basepath=".." data-revision="1408050610220">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -85,7 +85,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-spinner fa-spin"></i>
-        <a href="../" >Welcome</a>
+        <a href="../" >Welcome!</a>
     </h1>
 </div>
 
@@ -1163,18 +1163,10 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_612">
+                    <section class="normal" id="section-gitbook_1518">
                     
                         <h1 id="utilsjs">utils.js</h1>
 <p>I wanted a more central place to handle Utility functions that I was repeatedly calling. <code>utils.js</code> serves that purpose.</p>
-<p>QuickModel
-dataModelReplaceOnSurface
-CheckFlag, PostFlag
-Locale
-Analytics
-Pictures
-Notification.Toast
-Base 64 and utf8 encoding</p>
 <pre><code>var Utils = {
 </code></pre><h3 id="checkflag--postflag">CheckFlag / PostFlag</h3>
 <p>These functions are great for triggering one-time actions for a user, such as a Help popover when then visit a page for the first time, or when you&#39;ve added a new feature to an app.</p>
@@ -1213,7 +1205,7 @@ Base 64 and utf8 encoding</p>
 <pre><code>    var localFlag = &#39;highlights/home&#39;;
     Utils.CheckFlag(localFlag).then(function(){
         // popover
-        that.launch_help_popover();
+        alert(&#39;this will only happen once!&#39;);
         // update flag
         Utils.PostFlag(localFlag, true);
     });
@@ -1734,58 +1726,19 @@ Utils.dataModelReplaceOnSurface(s);
 
         return words.join(&#39; &#39;);
     },
-
-    randomInt: function(min, max){
+</code></pre><h4 id="random-integer">Random integer</h4>
+<pre><code>    randomInt: function(min, max){
         return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-
-    toFixedOrNone: function(val, len){
+</code></pre><h4 id="fixed-int-or-none">Fixed int or none</h4>
+<pre><code>    toFixedOrNone: function(val, len){
         var tmp = parseFloat(val).toFixed(len).toString();
         if (parseInt(tmp, 10).toString() == tmp){
             return isNaN(tmp) ? &#39;--&#39; : parseInt(tmp, 10).toString();
         }
         return isNaN(tmp) ? &#39;--&#39; : tmp;
     },
-
-    displayGameListDate: function(carvoyant_datetime, short_or_long){
-        // return Today, Yesterday, or the actual date
-        var date_string = &#39;&#39;;
-        var m;
-        try {
-            if(carvoyant_datetime.length == 20){
-                m = moment(carvoyant_datetime, &quot;YYYYMMDD HHmmss Z&quot;); // 20131106T230554+0000
-            } else {
-                m = moment(carvoyant_datetime);
-            }
-        } catch(err){
-            return &quot;&quot;;
-        }
-
-        if(!m.isValid()){
-            return &quot;Unknown&quot;
-        }
-
-        var now = moment().startOf(&#39;day&#39;);
-
-        if(now.diff(m.startOf(&#39;day&#39;), &#39;days&#39;) == 0){
-            return &quot;Today&quot;;
-        }
-        if(now.diff(m.startOf(&#39;day&#39;), &#39;days&#39;) == 1){
-            return &quot;Yesterday&quot;;
-        }
-
-        if(short_or_long == &quot;long&quot;){
-            return m.format(&quot;MMMM Do&quot;);
-        } else {
-            return m.format(&quot;MMM Do&quot;);
-        }
-    },
-
-};
-
-return Utils;
-</code></pre><p>});</p>
-
+</code></pre>
                     
                     </section>
                 

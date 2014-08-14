@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Native Plugin Initialization (device_ready.js) | Welcome</title>
+        <title>Native Plugin Initialization (device_ready.js) | Welcome!</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.7.0">
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="5.7" data-basepath=".." data-revision="1407976487982">
+    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="5.7" data-basepath=".." data-revision="1408050610220">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -85,7 +85,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-spinner fa-spin"></i>
-        <a href="../" >Welcome</a>
+        <a href="../" >Welcome!</a>
     </h1>
 </div>
 
@@ -1163,7 +1163,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_592">
+                    <section class="normal" id="section-gitbook_1499">
                     
                         <h1 id="device_readyjs">device_ready.js</h1>
 <h2 id="waiting-for-onready-to-beready">Waiting for .onReady to be...ready</h2>
@@ -1255,7 +1255,8 @@ This reduces clutter in your error logs, and keeps your debugging local.</p>
 <pre><code>        // Resume
         // - coming back to application
         document.addEventListener(&quot;resume&quot;, function(){
-            // Gather existing Push Notifications and see if we should summarize them, or show individually (confirm, etc.)
+            // Gather existing Push Notifications and see if we
+            // should summarize them, or show individually (confirm, etc.)
 
             App.Events.trigger(&#39;resume&#39;);
 
@@ -1270,36 +1271,12 @@ This reduces clutter in your error logs, and keeps your debugging local.</p>
                 App.Data.paused = false;
                 App.Data.was_paused = false;
 
-                // // Get queue
-                // // - more than 1 item in queue?
-                // // - different types of items?
-                // switch (App.Data.notifications_queue.length){
-                //     case 0:
-                //         // No messages
-                //         break;
-                //     case 1:
-                //         // Only a single message, use normal
-                //         Utils.process_push_notification_message(App.Data.notifications_queue.pop());
-                //         break;
-                //     default:
-                //         // Multiple notifications
-                //         // - get last added
-                //         // alert(App.Data.notifications_queue.length + &#39; Push Notifications Received. Latest Processed&#39;);
-                //         Utils.process_push_notification_message(App.Data.notifications_queue.pop());
-                //         App.Data.notifications_queue = [];
-                //         break;
-                // }
-                // var queue = App.Data.notifications_queue.concat([]);
-
-                // - assuming 1 type of Push Notification only at this time
-
             },1000);
 
         }, false);
 </code></pre><h3 id="menu-button">Menu button</h3>
 <pre><code>        // Init MENU button on Android (not always there?)
         document.addEventListener(&quot;menubutton&quot;, function(){
-            // - only launches the settings if we&#39;re on the main view
             App.history.navigate(&#39;settings&#39;);
         }, false);
 
@@ -1426,27 +1403,20 @@ This reduces clutter in your error logs, and keeps your debugging local.</p>
         try {
             App.Data.pushNotification = window.plugins.pushNotification;
             if (device.platform.toLowerCase() == &#39;android&#39;) {
-                // alert(&#39;android push&#39;);
 
                 App.Data.pushNotification.register(function(result){
                     console.log(&#39;Push Setup OK&#39;);
-                    // alert(&#39;Push Setup OK&#39;);
-                    // alert(&#39;success w/ Push Notifications&#39;);
-                    // alert(&#39;Push setup ok&#39;);
-                    // App.Utils.Notification.debug.temporary(&#39;Push Setup OK&#39;); // not actually ok, not registering, nothing sending to it
 
                 }, function(err){
                     alert(&#39;failed Push Notifications&#39;);
-                    // App.Utils.Notification.debug.temporary(&#39;Failed Push Notification Setup&#39;);
                     console.error(err);
-                    // alert(err);
                 },
                 {
-                    &quot;senderID&quot;: &quot;690693430367&quot;, //&quot;312360250527&quot;,
+                    &quot;senderID&quot;: &quot;your_sender_id_here&quot;,
                     &quot;ecb&quot;: &quot;onNotificationGCM&quot;
                 });
             } else if (device.platform.toLowerCase() == &#39;ios&#39;) {
-                // // alert(&#39;not&#39;);
+
                 App.Data.pushNotification.register(function(token){
                     console.log(&#39;ios token&#39;);
                     console.log(token);
@@ -1493,7 +1463,7 @@ This reduces clutter in your error logs, and keeps your debugging local.</p>
         }
     },
 </code></pre><h3 id="handling-incoming-push-notifications">Handling incoming Push Notifications</h3>
-<p>function onNotificationAPN(event) {
+<pre><code>function onNotificationAPN(event) {
     var pushNotification = window.plugins.pushNotification;
     console.log(&quot;Received a notification! &quot; + event.alert);
     console.log(&quot;event sound &quot; + event.sound);
@@ -1512,134 +1482,82 @@ This reduces clutter in your error logs, and keeps your debugging local.</p>
         var snd = new Media(event.sound);
         snd.play();
     }
-};</p>
-<p>// GCM = Google Cloud Messag[something]
+};
+
+// GCM = Google Cloud Messag[something]
 function onNotificationGCM(e){
     // Received a notification from GCM
-    // - multiple types of notifications</p>
-<pre><code>// App.Utils.Notification.debug.temp(&#39;New Notification: &#39; + e.event);
-// alert(&#39;onNotificationGCM&#39;);
-console.log(&#39;onNotificationGCM&#39;);
+    // - multiple types of notifications
 
-switch( e.event ){
-    case &#39;registered&#39;:
-        // alert(&#39;registered&#39;);
-        // Registered with GCM
-        if ( e.regid.length &gt; 0 ) {
-            // Your GCM push server needs to know the regID before it can push to this device
-            // here is where you might want to send it the regID for later use.
-            // alert(&#39;registration id: &#39; + e.regid);
-            // App.Utils.Notification.debug.temp(&#39;Reg ID:&#39; + e.regid.substr(0,25) + &#39;...&#39;);
-            console.log(&#39;Android registration ID for device&#39;);
-            console.log(e.regid);
+    // App.Utils.Notification.debug.temp(&#39;New Notification: &#39; + e.event);
+    // alert(&#39;onNotificationGCM&#39;);
+    console.log(&#39;onNotificationGCM&#39;);
 
-            // // Got the registration ID
-            // // - we&#39;re assuming this happens before we&#39;ve done alot of other stuff
-            // App.Credentials.android_reg_id = e.regid;
+    switch( e.event ){
+        case &#39;registered&#39;:
+            // alert(&#39;registered&#39;);
+            // Registered with GCM
+            if ( e.regid.length &gt; 0 ) {
+                // Your GCM push server needs to know the regID before it can push to this device
+                // here is where you might want to send it the regID for later use.
+                // alert(&#39;registration id: &#39; + e.regid);
+                // App.Utils.Notification.debug.temp(&#39;Reg ID:&#39; + e.regid.substr(0,25) + &#39;...&#39;);
+                console.log(&#39;Android registration ID for device&#39;);
+                console.log(e.regid);
 
-            // Write the key
-            // - see if the user is logged in
-            var i = 0;
-            var pushRegInterval = function(){
-                window.setTimeout(function(){
-                    // See if logged in
-                    if(App.Data.User.get(&#39;_id&#39;)){
-                        // Sweet, logged in, update user&#39;s android_reg_id
-                        // alert(&#39;saving user!&#39;); // ...
-                        // alert(App.Data.User.get(&#39;_id&#39;));
-                        // alert(e.regid);
-                        App.Data.User.set({android: [{reg_id: e.regid, last: new Date()}]});
-                        App.Data.User.save(); // update the user
+                // // Got the registration ID
+                // // - we&#39;re assuming this happens before we&#39;ve done alot of other stuff
+                // App.Credentials.android_reg_id = e.regid;
 
-                        // App.Plugins.Minimail.updateAndroidPushRegId(App.Credentials.android_reg_id);
-                    } else {
-                        // Try running again
-                        // App.Utils.Notification.debug.temp(&#39;NLI - try again&#39; + i);
-                        console.log(&#39;Not logged in - try android registration update again&#39;);
-                        console.log(App.Data.User.get(&#39;_id&#39;));
-                        i++;
-                        pushRegInterval();
-                    }
-                },3000);
-            };
-            pushRegInterval();
+                // Write the key
+                // - see if the user is logged in
+                var i = 0;
+                var pushRegInterval = function(){
+                    window.setTimeout(function(){
+                        // See if logged in
+                        if(App.Data.User.get(&#39;_id&#39;)){
+                            // Sweet, logged in, update user&#39;s android_reg_id
+                            // alert(&#39;saving user!&#39;); // ...
+                            // alert(App.Data.User.get(&#39;_id&#39;));
+                            // alert(e.regid);
+                            App.Data.User.set({android: [{reg_id: e.regid, last: new Date()}]});
+                            App.Data.User.save(); // update the user
 
-        }
-    break;
+                            // App.Plugins.Minimail.updateAndroidPushRegId(App.Credentials.android_reg_id);
+                        } else {
+                            // Try running again
+                            // App.Utils.Notification.debug.temp(&#39;NLI - try again&#39; + i);
+                            console.log(&#39;Not logged in - try android registration update again&#39;);
+                            console.log(App.Data.User.get(&#39;_id&#39;));
+                            i++;
+                            pushRegInterval();
+                        }
+                    },3000);
+                };
+                pushRegInterval();
 
-    case &#39;message&#39;:
-        // if this flag is set, this notification happened while we were in the foreground.
-        // you might want to play a sound to get the user&#39;s attention, throw up a dialog, etc.
-
-        // alert(&#39;message received&#39;);
-        // alert(JSON.stringify(e.payload));
-
-        // Capture and then wait for a half-second to see if any other messages are incoming
-        // - don&#39;t want to overload the person
-
-        // alert(&#39;Message!&#39;);
-        console.log(e);
-        console.log(JSON.stringify(e));
-
-        if (e.foreground){
-            // We were in the foreground when it was incoming
-            // - process right away
-            console.log(&#39;In FOREground&#39;);
-
-            // alert(&#39;Alert Triggered&#39;);
-
-            var payload = e.payload.payload;
-            var alert_trigger_id = payload.alert_trigger_id;
-
-            // Go to alert_trigger
-            Backbone.history.navigate(&#39;alert_trigger/&#39; + alert_trigger_id, {trigger: true});
-
-            require([&quot;utils&quot;], function (Utils) {
-                // Utils.process_push_notification_message(e);
-            });
-
-        } else {
-            // Not in the foreground
-            // - they clicked the notification
-            // - process all of them at once
-            // alert(&#39;in background&#39;);
-
-            var payload = e.payload.payload;
-            var alert_trigger_id = payload.alert_trigger_id;
-
-            // Go to alert_trigger
-            Backbone.history.navigate(&#39;alert_trigger/&#39; + alert_trigger_id, {trigger: true});
-
-            console.log(&#39;In BACKground!&#39;);
-            if (e.coldstart){
-                // App wasn&#39;t previously running, so it is starting up
-                console.log(&#39;In COLDstart&#39;);
-            } else {
-                // App is probably already displaying some other page
             }
+            break;
 
-            // add to process queue
-            // - the last/latest one gets analyzed
-            console.log(&#39;ADDING TO PUSH QUEUE&#39;);
-            // App.Data.notifications_queue.push(e);
+        case &#39;message&#39;:
+            // if this flag is set, this notification happened while we were in the foreground.
+            // you might want to play a sound to get the user&#39;s attention, throw up a dialog, etc.
 
-        }
+            Utils.process_push_notification_message(e.payload.payload);
 
+            break;
 
+        case &#39;error&#39;:
+            alert(&#39;GCM error&#39;);
+            alert(e.msg);
+            break;
 
-    break;
-
-    case &#39;error&#39;:
-        alert(&#39;GCM error&#39;);
-        alert(e.msg);
-    break;
-
-    default:
-        alert(&#39;An unknown GCM event has occurred&#39;);
-    break;
-}
-</code></pre><p>};</p>
-
+        default:
+            alert(&#39;An unknown GCM event has occurred&#39;);
+            break;
+    }
+};
+</code></pre>
                     
                     </section>
                 

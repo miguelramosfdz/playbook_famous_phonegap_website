@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Gotchas | Welcome</title>
+        <title>Gotchas | Welcome!</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.7.0">
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="4.1" data-basepath=".." data-revision="1407976487982">
+    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="4.1" data-basepath=".." data-revision="1408050610220">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -85,7 +85,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-spinner fa-spin"></i>
-        <a href="../" >Welcome</a>
+        <a href="../" >Welcome!</a>
     </h1>
 </div>
 
@@ -1163,11 +1163,11 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_614">
+                    <section class="normal" id="section-gitbook_1520">
                     
                         <h1 id="gotchas">Gotchas</h1>
-<h3 id="whats-a-more-layman-y-description-of-famous-what-is-famous-actually-doing">What&#39;s a more layman-y description of famo.us? What is famo.us actually doing?</h3>
-<p>Famo.us tries to take away the things that a browser is bad at (rendering html, simplistically) and take advantage of browser good parts (webkit CSS 3d transforms are hardware accelerated!). If you use Chrome Dev Tools to inspect the sample app, you&#39;ll notice the <code>&lt;div&gt;</code>s only go 2-3 levels deep. Famo.us creates a &quot;virtual DOM&quot; and re-uses the divs on the page. This means you can NEVER use jQuery to reliably query the DOM!</p>
+<h3 id="what-is-a-laymans-description-of-famous-what-is-famous-actually-doing">What is a layman&#39;s description of famo.us? What is famo.us actually doing?</h3>
+<p>Famo.us tries to take away the things that a browser is bad at (rendering html, simplistically), while taking advantage of browser benefits (webkit CSS 3d transforms are hardware accelerated!). If you use Chrome Dev Tools to inspect the sample app, you&#39;ll notice the <code>&lt;div&gt;</code>s only go 2-3 levels deep. Famo.us creates a &quot;virtual DOM&quot; and re-uses the divs on the page. This means you can NEVER use jQuery to reliably query the DOM!</p>
 <p>Famo.us uses a scene graph (<a href="http://en.wikipedia.org/wiki/Scene_graph" target="_blank">http://en.wikipedia.org/wiki/Scene_graph</a>), basically a game engine that renders to the screen at (a target) 60 frames-per-second. At 60 FPS, it means that every 16 milliseconds, Famo.us will update its virtual DOM by calling many of the <code>render</code> methods on famo.us components, and then render the result to the browser.</p>
 <p>Keep in mind that famo.us can be used in many different ways. If you&#39;re familiar with Angular.js, check out those integrations!</p>
 <p>Famo.us maintains a list of common pitfalls/gotchas as well:

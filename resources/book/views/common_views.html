@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Common Views | Welcome</title>
+        <title>Common Views | Welcome!</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.7.0">
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="7.3" data-basepath=".." data-revision="1407976487982">
+    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="7.3" data-basepath=".." data-revision="1408050610220">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -85,7 +85,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-spinner fa-spin"></i>
-        <a href="../" >Welcome</a>
+        <a href="../" >Welcome!</a>
     </h1>
 </div>
 
@@ -1163,15 +1163,55 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_645">
+                    <section class="normal" id="section-gitbook_1551">
                     
                         <h1 id="common-views">Common Views</h1>
-<h2 id="standardheader-and-standardnavigationbar">StandardHeader and StandardNavigationBar</h2>
+<p>I&#39;ve slightly modified a few famo.us components, and included them in the <code>views/common/</code> directory.</p>
+<h3 id="standardheader-and-standardnavigationbar"><code>StandardHeader</code> and <code>StandardNavigationBar</code></h3>
 <p>Basically every view uses this combination. Together, they handle &quot;Back&quot; transitions, title surfaces, addditional surfaces (the &quot;more&quot; surfaces in the top-right).</p>
 <h3 id="standardheader">StandardHeader</h3>
-<p>details. ehre...</p>
-<h3 id="standardnavigationbar">StandardNavigationBar</h3>
-<p>details here...</p>
+<p>Includes a back icon, title text, and optional <code>moreSurfaces</code> for including icons/links/buttons in the header.</p>
+<pre><code>PageView.prototype.createHeader = function(){
+    var that = this;
+
+    this.headerContent = new View();
+    this.headerContent.Settings = new Surface({
+        content: &#39;&lt;i class=&quot;icon ion-gear-a&quot;&gt;&#39;,
+        size: [60, undefined],
+        classes: [&#39;header-tab-icon-text-big&#39;]
+    });
+    this.headerContent.Settings.on(&#39;click&#39;, function(){
+        App.history.navigate(&#39;settings&#39;);
+    });
+
+    // create the header
+    this.header = new StandardHeader({
+        content: &#39;Invite Friends&#39;,
+        classes: [&quot;normal-header&quot;],
+        backClasses: [&quot;normal-header&quot;],
+        moreSurfaces: [
+            this.headerContent.Settings
+        ]
+    });
+    this.header._eventOutput.on(&#39;back&#39;,function(){
+        App.history.back();
+    });
+    this.header.navBar.title.on(&#39;click&#39;,function(){
+        App.history.back();
+
+    });
+    this.header.pipe(this._eventInput);
+</code></pre><p>The StandardHeader is equipped to handle <code>inOutTransition</code> events.</p>
+<pre><code>    this._eventOutput.on(&#39;inOutTransition&#39;, function(args){
+        this.header.inOutTransition.apply(this.header, args);
+    })
+
+    // Attach header to the layout
+    this.layout.header.add(this.header);
+
+};
+</code></pre><h3 id="standardnavigationbar">StandardNavigationBar</h3>
+<p>This is used as part of the <code>StandardHeader</code>, and includes the logic for <code>moreSurfaces</code>.</p>
 <h3 id="standardtabbar">StandardTabBar</h3>
 <p>Uses <code>StandardToggleButton</code> and changed to not emit an event if <code>triggerEvent === false</code> on <code>.select</code>.</p>
 <h3 id="standardtogglebutton">StandardToggleButton</h3>

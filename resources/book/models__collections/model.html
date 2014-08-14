@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Model | Welcome</title>
+        <title>Model | Welcome!</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.7.0">
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="6.1" data-basepath=".." data-revision="1407976487982">
+    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="6.1" data-basepath=".." data-revision="1408050610220">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -85,7 +85,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-spinner fa-spin"></i>
-        <a href="../" >Welcome</a>
+        <a href="../" >Welcome!</a>
     </h1>
 </div>
 
@@ -1163,7 +1163,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_622">
+                    <section class="normal" id="section-gitbook_1528">
                     
                         <h1 id="model">Model</h1>
 <p>An except from <code>models/action.js</code>:</p>
@@ -1187,10 +1187,10 @@ Action = Backbone.UniqueModel(Action);
 </code></pre><h4 id="backbonedeepmodel">Backbone.DeepModel</h4>
 <p>Allows us to query nested attributes in a model. We can do:</p>
 <pre><code>ourModel.get(&#39;data.nested.attr&#39;);
-</code></pre><p>instead of some bs like:</p>
+</code></pre><p>instead of repetitive code like:</p>
 <pre><code>if(ourModel.get(&#39;data&#39;) &amp;&amp; ourModel.get(&#39;data&#39;).nested &amp;&amp; ourModel.get(&#39;data&#39;).nested.attr){...}
 </code></pre><h4 id="backboneuniquemodel">Backbone.UniqueModel</h4>
-<p>Gives us an App-wide (localStorage-backed, I believe) version of <em>the same</em> model everytime we instantiate.</p>
+<p>Gives us an App-wide version of <em>the same</em> model everytime we instantiate.</p>
 <pre><code>var ActionModel = require(&#39;models/action&#39;);
 var a = ActionModel.Action({
     _id: &quot;xyz&quot; // ObjectId

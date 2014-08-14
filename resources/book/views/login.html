@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>Login | Welcome</title>
+        <title>Login | Welcome!</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.7.0">
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="7.4" data-basepath=".." data-revision="1407976487982">
+    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="7.4" data-basepath=".." data-revision="1408050610220">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -85,7 +85,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-spinner fa-spin"></i>
-        <a href="../" >Welcome</a>
+        <a href="../" >Welcome!</a>
     </h1>
 </div>
 
@@ -1163,7 +1163,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_644">
+                    <section class="normal" id="section-gitbook_1550">
                     
                         <h1 id="login">Login</h1>
 <p>The Login view has no Header or Footer.</p>
@@ -1183,7 +1183,7 @@
     var that = this;
     View.apply(this, arguments);
     this.options = options;
-</code></pre><p>We&#39;ve already <code>var UserModel = require(&#39;models/user&#39;);</code>&#39;d our model, now we create an empty User to hold our credentials to login with later.</p>
+</code></pre><p>We&#39;ve already required (<code>var UserModel = require(&#39;models/user&#39;);</code>) our model, now we create an empty User to hold our credentials to login with later.</p>
 <pre><code>    // Model
     this.model = new UserModel.User();
 </code></pre><p>Add your background surface. Remember, order counts (but so does Transform position), so we use both this &quot;put it on the RenderTree first&quot; and add a Modifier to move it backwards in Z space.</p>
@@ -1202,7 +1202,7 @@
 </code></pre><p>You&#39;ll notice this pattern used frequently:</p>
 <pre><code>    this.layout.Views = [];
 </code></pre><blockquote>
-<p>Notice that the SequentialLayout is going to sequenceFrom &quot;itself-ish&quot; later</p>
+<p>Notice that the SequentialLayout is going to sequenceFrom &quot;itself&quot; i.e. <code>this.layout.views</code> later</p>
 </blockquote>
 <p>Now we add our surfaces, in order.</p>
 <p>Each Surface is <code>.push</code>ed onto the <code>this.layout.Views</code> array.</p>

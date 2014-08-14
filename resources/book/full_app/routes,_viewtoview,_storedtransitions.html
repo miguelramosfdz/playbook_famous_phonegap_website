@@ -4,7 +4,7 @@
     <head>
         
         <meta charset="UTF-8">
-        <title>routes, ViewToView, StoredTransitions | Welcome</title>
+        <title>routes, ViewToView, StoredTransitions | Welcome!</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 0.7.0">
@@ -34,7 +34,7 @@
 
 
         
-    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="5.8.1" data-basepath=".." data-revision="1407976487982">
+    <div class="book" data-github="nicholasareed/playbook_famous_phonegap" data-level="5.8.1" data-basepath=".." data-revision="1408050610220">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -85,7 +85,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-spinner fa-spin"></i>
-        <a href="../" >Welcome</a>
+        <a href="../" >Welcome!</a>
     </h1>
 </div>
 
@@ -1163,7 +1163,7 @@
 
                 <div class="page-inner">
                 
-                    <section class="normal" id="section-gitbook_605">
+                    <section class="normal" id="section-gitbook_1512">
                     
                         <h1 id="routes-viewtoview-storedtransitions">routes, ViewToView, StoredTransitions</h1>
 <h3 id="set-up-our-routes">Set up our Routes</h3>
@@ -1196,29 +1196,20 @@
         defaultRoute(&#39;Welcome&#39;, &#39;User/Welcome&#39;, arguments, {cache: false});
     },
 </code></pre><p>We&#39;ll use the <code>defaultRoute</code> many, many times in our routes.</p>
-<hr>
 <h3 id="defaultroute">DefaultRoute</h3>
-<p>Go read about <code>defaultRoute</code>.</p>
+<p>Go read about <code>defaultRoute</code> (one or two chapters below).</p>
 <hr>
+<h4 id="more-common-routes">More, common routes:</h4>
 <pre><code>    &#39;modal/helppopover&#39; : function(){
-        // eh, I should be able to cache this route before login, then destroy after login
-        // defaultRoute(&#39;OptionModal&#39;, &#39;Misc/OptionModal&#39;, arguments, {cache: false});
         App.Flags.InPopover = true;
         App.history.navigate(&#39;random&#39;, {history: false});
         defaultRoute(&#39;HelpPopover&#39;, &#39;Misc/HelpPopover&#39;, arguments, {cache: false, popover: true});
     },
 
     &#39;modal/list&#39; : function(){
-        // eh, I should be able to cache this route before login, then destroy after login
-        // defaultRoute(&#39;OptionModal&#39;, &#39;Misc/OptionModal&#39;, arguments, {cache: false});
         App.Flags.InPopover = true;
         App.history.navigate(&#39;random&#39;, {history: false});
         defaultRoute(&#39;Popover&#39;, &#39;Misc/Popover&#39;, arguments, {cache: false, popover: true});
-    },
-
-    &#39;modal/old_list&#39; : function(){
-        // eh, I should be able to cache this route before login, then destroy after login
-        defaultRoute(&#39;OptionModal&#39;, &#39;Misc/OptionModal&#39;, arguments, {cache: false});
     },
 
     &#39;login&#39; : function(){
@@ -1263,22 +1254,6 @@
         defaultRoute(&#39;Dash&#39;, &#39;Player/Player&#39;, arguments); // used to be Player/Dash
     },
 
-    &#39;ranking/:summary_type/:player_filter/:player_id/:timeframe&#39; : function(){
-        defaultRoute(&#39;Ranking&#39;, &#39;Player/Ranking&#39;, arguments);
-    },
-
-    &#39;story/all&#39; : function(){
-        App.Views.MainFooter.route_show = true;
-        App.Views.MainFooter.Tabs.select(&#39;story&#39;, false);
-        defaultRoute(&#39;Story&#39;, &#39;Story/Stories&#39;, arguments);
-    },
-    &#39;story/add/detail&#39; : function(){
-        defaultRoute(&#39;StoryAddDetail&#39;, &#39;Story/AddDetail&#39;, arguments, {cache: false});
-    },
-    &#39;story/add/game/:game_id&#39; : function(){
-        defaultRoute(&#39;StoryAdd&#39;, &#39;Story/Add&#39;, arguments, {cache: false});
-    },
-
 
     &#39;actions/all&#39; : function(){
         App.Views.MainFooter.route_show = true;
@@ -1292,38 +1267,8 @@
         defaultRoute(&#39;Explore&#39;, &#39;Explore/Explore&#39;, arguments);
     },
 
-
-    &#39;game/add/sport&#39; : function(){
-        defaultRoute(&#39;GameAddSport&#39;, &#39;Game/GameAddSport&#39;, arguments, {cache: false});
-    },
-    &#39;game/add/player&#39; : function(){
-        defaultRoute(&#39;GameAddPlayer&#39;, &#39;Game/GameAddPlayer&#39;, arguments, {cache: false});
-    },
-    &#39;game/add/result&#39; : function(){
-        defaultRoute(&#39;GameAddResult&#39;, &#39;Game/GameAddResult&#39;, arguments, {cache: false});
-    },
-    &#39;game/add/detail&#39; : function(){
-        defaultRoute(&#39;GameAddDetail&#39;, &#39;Game/GameAddDetail&#39;, arguments, {cache: false});
-    },
-    &#39;game/add&#39; : function(){
-        defaultRoute(&#39;GameAdd&#39;, &#39;Game/GameAdd&#39;, arguments, {cache: false});
-    },
-    &#39;game/:id&#39; : function(){
-        defaultRoute(&#39;Game&#39;, &#39;Game/Game&#39;, arguments);
-    },
-
-
-    &#39;player/comparison/:hash&#39; : function(){
-        defaultRoute(&#39;PlayerComparison&#39;, &#39;Player/Comparison&#39;, arguments, {cache: true});
-    },
-
     &#39;players/search&#39; : function(){
         defaultRoute(&#39;PlayerSearch&#39;, &#39;Player/PlayerSearch&#39;, arguments, { cache: true });
-    },
-
-    // List friends/nemeses of a player
-    &#39;player/list/:player_id&#39; : function(){
-        defaultRoute(&#39;PlayerList&#39;, &#39;Player/PlayerList&#39;, arguments, { cache: false });
     },
 
     &#39;player/add/nolink&#39; : function(){
@@ -1342,22 +1287,6 @@
         App.Views.MainFooter.route_show = true;
         App.Views.MainFooter.Tabs.select(&#39;profiles&#39;, false);
         defaultRoute(&#39;Player&#39;, &#39;Player/Player&#39;, arguments);
-    },
-
-    &#39;sport/add/parent_sport(/:hash)&#39; : function(){
-        defaultRoute(&#39;SportAddParentSport&#39;, &#39;Sport/AddParentSport&#39;, arguments, {cache: true});
-    },
-    &#39;sport/add/details(/:hash)&#39; : function(){
-        defaultRoute(&#39;SportAddDetail&#39;, &#39;Sport/AddDetail&#39;, arguments, {cache: true});
-    },
-    &#39;sport/add&#39; : function(){
-        defaultRoute(&#39;SportAdd&#39;, &#39;Sport/Add&#39;, arguments, {cache: false});
-    },
-    &#39;sport/edit/:id&#39; : function(){
-        defaultRoute(&#39;SportEdit&#39;, &#39;Sport/Edit&#39;, arguments, {cache: false});
-    },
-    &#39;sport/:id&#39; : function(){
-        defaultRoute(&#39;Sport&#39;, &#39;Sport/Sport&#39;, arguments);
     },
 
 
