@@ -1,6 +1,6 @@
 /*
  * Globals
- */
+*/
 
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -85,18 +85,24 @@ h6, .h6 {
 .blog-title {
   margin-top: 30px;
   margin-bottom: 0;
-  font-size: 60px;
+  font-size: 34px;
   font-weight: normal;
 }
 .blog-description {
   font-size: 20px;
-  color: #444;
+  color: #666;
 }
 .blog-author {
   font-size: 20px;
   color: #888;
 }
 
+p.screenshots img {
+	border:1px solid #111;
+	/*margin: 8px;*/
+	margin: 4px;
+	width: 220px;
+}
 
 /*
  * Main column and sidebar layout
